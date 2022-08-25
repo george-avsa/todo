@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: #243c5a;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.active-cirlce.entering {
+  animation: show-hide-active .1s forwards;
+}
+
+.active-cirlce.exiting {
+  animation: show-hide-active .1s reverse;
+}
+
+.active-cirlce.entered {
+  opacity: 1;
+}
+
+@keyframes show-hide-active {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+#kek.entering {
+  animation: rotate .2s forwards linear;
+}
+
+@keyframes rotate {
+  from {
+    top: 0px;
+    transform: rotate(0deg);
+  }
+  to {
+    height: 3px;
+    top: 7px;
+    transform: rotate(-45deg);
+  }
+}
+
+#kek.entered {
+  top: 7px;
+  transform: rotate(-45deg);
+  height: 3px;
+}
+
+#kek2.entering {
+  animation: rotate-reverse .2s forwards linear;
+}
+
+#kek2.entered {
+  top: 7px;
+  transform: rotate(45deg);
+  height: 3px;
+}
+
+#kek2.exiting {
+  animation: rotate-reverse .2s reverse linear;
+}
+
+#kek2.exited {
+  transform: rotate(0deg);
+  height: 2px;
+}
+
+#kek.exiting {
+  animation: rotate .2s reverse linear;
+}
+
+#kek.exited {
+  top: 0px;
+  transform: rotate(0deg);
+  height: 2px;
+}
+
+
+@keyframes rotate-reverse {
+  from {
+    top: 0px;
+    transform: rotate(0deg);
+  }
+  to {
+    height: 3px;
+    top: 7px;
+    transform: rotate(45deg);
+  }
+}
+
+
+#kek3.entering {
+  animation: disapearing .2s forwards linear;
+}
+
+#kek3.entered {
+  opacity: 0;
+}
+
+#kek3.exiting {
+  animation: disapearing .2s reverse linear;
+}
+
+#kek3.exited {
+  opacity: 1;
+}
+
+@keyframes disapearing {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+nav.entering {
+  animation: slide-down .2s forwards linear;
+}
+
+nav.exiting {
+  animation: slide-down .2s reverse linear;
+}
+
+nav.exited {
+  height: 0px;
+}
+
+nav.entered {
+  height: 230px;
+}
+
+@keyframes slide-down {
+  from {
+    height: 0px;
+  }
+  to {
+    height: 230px;
+  }
+}
