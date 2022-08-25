@@ -25,13 +25,15 @@ function App() {
     {name: "Targets", image: target, active:false, link: '/targets'},
   ])
 
-  const [menuMobile, setMenuMobile] = useState(false)
+  const screenSize = parseInt(window.innerWidth)
 
+  const [menuMobile, setMenuMobile] = useState(false)
+  
   useEffect(() => {
-    if (parseInt(window.innerWidth) > 767) {
+    if (screenSize > 767) {
       setMenuMobile(true)
     }
-
+    
     let kekurl = (window.location+'').replace('http://localhost:3000', '')
     let kekplus = []
     navItems.forEach((kek) => {
@@ -50,9 +52,9 @@ function App() {
   }, [])
 
   return (
-    <div className="container mx-auto 2xl flex h-full sm:w-screen sm:m-0 sm:h-10">
+    <div className="container mx-auto 2xl flex h-full sm:w-screen sm:m-0 sm:h-10 sm:block">
       
-      <div className="w-1/5 pl-6 box-border pt-10 pb-9 flex sm:overflow-y-hidden flex-col justify-between sm:fixed sm:w-full sm:pl-8 sm:pr-8 sm:bg-light-blue sm:flex-row">
+      <div className="w-1/5 pl-6 box-border pt-10 pb-9 flex sm:overflow-y-hidden flex-col justify-between sm:w-full sm:pl-8 sm:pr-8 sm:bg-light-blue sm:flex-row">
         <div className="w-full flex flex-col flex-between">
           <div className="flex items-end">
             <img className="" src={logo}></img>
@@ -67,7 +69,7 @@ function App() {
             {state => (
               <nav className={'flex flex-col mt-20 sm:mt-4 sm:h-0 ' + state}>
                 {navItems.map(navItem => (
-                  <NavItem menuState={menuMobile} image={navItem.image} classState={state} key={navItem.name} active={navItem.active} state={navItems} link={navItem.link} change={setNavItems}>{navItem.name}</NavItem>
+                  <NavItem screen={screenSize} menuState={menuMobile} image={navItem.image} classState={state} key={navItem.name} active={navItem.active} setActive={setMenuMobile} state={navItems} link={navItem.link} change={setNavItems}>{navItem.name}</NavItem>
                 ))}
               </nav>
             )}

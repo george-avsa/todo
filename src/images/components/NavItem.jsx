@@ -18,6 +18,9 @@ export default function NavItem(props) {
         }
     })
     props.change(kekplus)
+    if (props.screen < 767) {
+        props.setActive(false)
+    }
   }
 
   return (

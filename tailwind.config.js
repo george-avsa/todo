@@ -8,7 +8,9 @@ module.exports = {
       colors: {
         'regal-blue': '#243c5a',
         'light-blue': '#21436B',
-        'dark-blue': '#172737'
+        'dark-blue': '#172737',
+        'kek-blue': '#172F4B',
+        'blue': '#254D79'
       },
       screens: {
         'sm': {'max': '767px'},
