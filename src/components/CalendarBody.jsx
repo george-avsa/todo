@@ -10,11 +10,11 @@ export default function CalendarBody(props) {
     }, [props.items])
 
     return (
-        <div className='w-full grid grid-cols-7 gap-4 mt-9'>
+        <div className='w-full grid grid-cols-7 gap-4 mt-9 md:grid-cols-5 sm:grid-cols-3'>
             <WeekDays header={props.header}/>
             <Transition
                 in={props.animation}
-                timeout={100}
+                timeout={150}
                 unmountOnExit
             >
                 {state => 

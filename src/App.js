@@ -30,7 +30,7 @@ function App() {
   const [menuMobile, setMenuMobile] = useState(false)
   
   useEffect(() => {
-    if (screenSize > 767) {
+    if (screenSize > 900) {
       setMenuMobile(true)
     }
     

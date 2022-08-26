@@ -177,3 +177,27 @@ nav.entered {
     opacity: 1;
   }
 }
+
+.calendar-item-bad {
+  background: linear-gradient(38.03deg, rgba(255, 138, 0, 0.2) 4.75%, rgba(255, 138, 0, 0) 45.58%);
+  transform: matrix(1, 0, 0, -1, 0, 0);
+}
+
+.calendar-item-norm {
+  background: linear-gradient(38.03deg, rgba(255, 138, 0, 0.38) 4.75%, rgba(255, 138, 0, 0) 45.58%);
+  transform: matrix(1, 0, 0, -1, 0, 0);
+}
+
+.calendar-item-good {
+  background: linear-gradient(38.03deg, rgba(169, 255, 138, 0.2) 4.75%, rgba(169, 255, 138, 0) 45.58%);
+  transform: matrix(1, 0, 0, -1, 0, 0);
+}
+
+.calendar-item-today {
+  top: 15px;
+  left: 15px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: #fff;
+}
