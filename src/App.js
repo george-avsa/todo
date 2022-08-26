@@ -82,7 +82,7 @@ function App() {
       </div>
 
       <div className="w-4/5 sm:w-screen box-border pt-10 pb-9 pr-6 sm:pr-0">
-        <div className="w-full bg-dark-blue rounded-3xl box-border p-5 text-white">
+        <div className="w-full bg-dark-blue rounded-3xl box-border p-5 text-white min-h-full">
           <Routes>
             <Route path="/" element={<Calendar/>} />
             <Route path="/tasks" element={<Tasks/>} />

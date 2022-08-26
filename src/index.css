@@ -152,3 +152,28 @@ nav.entered {
     height: 230px;
   }
 }
+
+.calendar-item.exiting {
+  animation: show-hide-calendar-item .2s reverse linear;
+}
+
+.calendar-item.exited {
+  opacity: 0;
+}
+
+.calendar-item.entered {
+  opacity: 1;
+}
+
+.calendar-item.entering {
+  animation: show-hide-calendar-item .2s forwards linear;
+}
+
+@keyframes show-hide-calendar-item {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
