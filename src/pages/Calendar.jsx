@@ -3,9 +3,11 @@ import CalendarBody from '../components/CalendarBody'
 import Header from '../components/Header'
 import MonthFilter from '../components/MonthFilter'
 
-export default function Calendar() {
+export default function Calendar(props) {
 
   const kek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+
+  const [tasks, setTasks] = useState([])
 
   const [animationCalendarItems, setAnimationCalendarItems] = useState(false)
   
@@ -23,10 +25,34 @@ export default function Calendar() {
     setAnimationCalendarItems(true)
   }, [])
 
+function splitDate(str) {
+  const dateArray = []
+  str += ' '
+  while (dateArray.length != 3) {
+    let pos = str.search('/')
+    dateArray.push(str.slice(0, pos))
+    str = str.slice(pos+1, str.length)
+  }
+return dateArray
+}
+
+function generateDate(str) {
+  const dateArray = splitDate(str)
+  return new Date(dateArray[2], dateArray[1], dateArray[0])
+}
+
+useEffect(() => {
+  const newTasks = []
+  props.tasks.forEach((task) => {
+    newTasks.push({...task, 'deadline': generateDate(task.deadline ), 'start': generateDate(task.start)}) 
+  })
+  setTasks(newTasks)
+}, [props.tasks])
+
   const keklol = useMemo(() => {
     const array = []
     let counter = 1
-
+    console.log(tasks)
       for (let i = 0; i < (date[4]+weeksJs[date[3]]-1); i++) {
         if (weeksJs[date[3]]-2 >= i) {
           array.push([false])
@@ -58,8 +84,8 @@ export default function Calendar() {
 
   return (
     <>
-      <Header month={<MonthFilter decrement={dateDecrement} changeAnimation={setAnimationCalendarItems} date={date[2]} />} />
-      <CalendarBody header={kek} items={keklol} animation={animationCalendarItems} changeAnimation={setAnimationCalendarItems} />
+      <Header month={<MonthFilter decrement={dateDecrement} changeAnimation={setAnimationCalendarItems} date={date[2]} animation={animationCalendarItems} />} />
+      <CalendarBody header={kek} items={keklol} animation={animationCalendarItems} changeAnimation={setAnimationCalendarItems} tasks={tasks} />
     </>
   )
 }

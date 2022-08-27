@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 export default function CalendarItem(props) {
+
+    useEffect(() => {
+        console.log(props.keklol[1])
+    }, [])
 
     function dateToString(date) {
         return date.getDate() + '.' + date.getDate()  + '.' + (date.getYear()+1900)

@@ -18,7 +18,7 @@ export default function CalendarBody(props) {
                 unmountOnExit
             >
                 {state => 
-                    <CalendarItems items={props.items} classState={state} />
+                    <CalendarItems items={props.items} classState={state} tasks={props.tasks} />
                 }
             </Transition>
         </div>

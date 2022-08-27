@@ -27,29 +27,51 @@ function App() {
 
   const screenSize = parseInt(window.innerWidth)
 
+  const [tasksArray, setTasksArray] = useState([])
+  
+
   const [menuMobile, setMenuMobile] = useState(false)
   
+
+
+  async function loadNames(change) {
+    const response = await fetch('http://127.0.0.1:8000/tasks/');
+    const names = await response.json();
+    change(names.tasks)
+    // return names.tasks
+ }
+
   useEffect(() => {
+    
     if (screenSize > 900) {
       setMenuMobile(true)
     }
-    
     let kekurl = (window.location+'').replace('http://localhost:3000', '')
     let kekplus = []
     navItems.forEach((kek) => {
-        if (kekurl == kek.link) {
-            let kek2 = kek
-            kek2.active = true 
-            kekplus.push(kek2)
-        } else {
-            let kek2 = kek
-            kek2.active = false 
-            kekplus.push(kek2)
-        }
+      if (kekurl == kek.link) {
+        let kek2 = kek
+        kek2.active = true 
+        kekplus.push(kek2)
+      } else {
+        let kek2 = kek
+        kek2.active = false 
+        kekplus.push(kek2)
+      }
     })
+    
     setNavItems(kekplus)
 
-  }, [])
+    // fetch('./DB/kek.json')
+    // .then(response => {
+    //     return response.json();
+    // })
+    // .then(json => {
+    //      console.log(json);
+    // })
+    
+      loadNames(setTasksArray);
+    }, [])
 
   return (
     <div className="container mx-auto 2xl flex h-full sm:w-screen sm:m-0 sm:h-10 sm:block">
@@ -84,7 +106,7 @@ function App() {
       <div className="w-4/5 sm:w-screen box-border pt-10 pb-9 pr-6 sm:pr-0">
         <div className="w-full bg-dark-blue rounded-3xl box-border p-5 text-white min-h-full">
           <Routes>
-            <Route path="/" element={<Calendar/>} />
+            <Route path="/" element={<Calendar tasks={tasksArray} />} />
             <Route path="/tasks" element={<Tasks/>} />
             <Route path="/events" element={<Events />} />
             <Route path="/targets" element={<Targets/>} />
