@@ -25,6 +25,8 @@ function App() {
     {name: "Targets", image: target, active:false, link: '/targets'},
   ])
 
+  const [modalVisibililty, setModalVisibililty] = useState(false)
+
   const screenSize = parseInt(window.innerWidth)
 
   const [tasksArray, setTasksArray] = useState([])
@@ -32,7 +34,6 @@ function App() {
 
   const [menuMobile, setMenuMobile] = useState(false)
   
-
 
   async function loadNames(change) {
     const response = await fetch('http://127.0.0.1:8000/tasks/');
@@ -106,7 +107,7 @@ function App() {
       <div className="w-4/5 sm:w-screen box-border pt-10 pb-9 pr-6 sm:pr-0">
         <div className="w-full bg-dark-blue rounded-3xl box-border p-5 text-white min-h-full">
           <Routes>
-            <Route path="/" element={<Calendar tasks={tasksArray} />} />
+            <Route path="/" element={<Calendar tasks={tasksArray} modal={modalVisibililty} setModal={setModalVisibililty} />} />
             <Route path="/tasks" element={<Tasks/>} />
             <Route path="/events" element={<Events />} />
             <Route path="/targets" element={<Targets/>} />

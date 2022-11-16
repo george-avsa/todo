@@ -179,7 +179,7 @@ nav.entered {
 }
 
 .calendar-item-bad {
-  background: linear-gradient(38.03deg, rgba(255, 138, 0, 0.2) 4.75%, rgba(255, 138, 0, 0) 45.58%);
+  background: linear-gradient(38.03deg, #5A304C 4.75%, rgba(90, 48, 76, 0) 45.58%);
   transform: matrix(1, 0, 0, -1, 0, 0);
 }
 
@@ -200,4 +200,293 @@ nav.entered {
   height: 13px;
   border-radius: 50%;
   background-color: #fff;
+}
+
+.modal-wrapper {
+  opacity: 0;
+}
+
+.modal-wrapper.entering {
+  animation: modalAppering .2s forwards linear;
+}
+
+.modal-wrapper.exiting {
+  animation: modalAppering .2s reverse linear;
+}
+
+.modal-wrapper.exited {
+  opacity: 0;
+}
+
+.modal-wrapper.entered {
+  opacity: 1;
+}
+
+@keyframes modalAppering {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modalPreloader {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  animation: modalRotating 2s infinite linear;
+}
+
+@keyframes modalRotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.preloaderCircle {
+  animation: modalCircle .3s infinite linear;
+}
+
+@keyframes modalCircle {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  50% {
+    top: -10px;
+    left: -10px;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+  }
+}
+
+.task_hover {
+
+}
+
+.task_hover.entering {
+  animation: modalAppering .2s forwards linear;
+}
+
+.task_hover.exiting {
+  animation: modalAppering .2s reverse linear;
+}
+
+.task_hover.exited {
+  opacity: 0;
+}
+
+.task_hover.entered {
+  opacity: 1;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+*
+{
+  overflow: -moz-scrollbars-none;
+}
+
+.taskSwitch.exiting {
+  animation: switch .2s forwards ease-in-out;
+}
+
+.taskSwitch.exited {
+  left: 50%;
+  border-radius: 16px;
+}
+
+.taskSwitch.entering {
+  animation: switch .2s reverse ease-in-out;
+}
+
+.taskSwitch.entered {
+  left: 0%;
+  border-radius: 16px;  
+}
+
+@keyframes switch {
+  0% {
+    left: 0%;
+    width: 50%;
+  }
+  100% {
+    left: 50%;
+    width: 50%;
+  }
+}
+
+.filterBtn {
+  background: linear-gradient(90deg, #172F4B 0%, #172F4B 20%, #275180 80%, #275180 100%);
+}
+
+.filterBtn.exited {
+  left: 0%;
+}
+
+.filterBtn.entered {
+  left: -400%;
+}
+
+.filterBtn.entering {
+  animation: opacityAnimation .2s forwards ease-in-out;
+}
+
+.filterBtn.exiting {
+  animation: opacityAnimation .2s reverse ease-in-out;
+}
+
+@keyframes opacityAnimation {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: -400%;
+  }
+}
+
+.filter.entered {
+  height: 48px;
+  opacity: 1;
+}
+
+.filter.exited {
+  height: 0px;
+  opacity: 0;
+}
+
+.filter.entering {
+  animation: heightAnimation .2s forwards linear;
+}
+
+.filter.exiting {
+  animation: heightAnimation .2s reverse linear;
+}
+
+@keyframes heightAnimation {
+  0% {
+    height: 0px;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    height: 48px;
+    opacity: 1;
+  }
+}
+
+.selectArrow.entered {
+  transform: rotate(180deg);
+}
+
+.selectArrow.exited {
+  transform: rotate(0deg);
+}
+
+.selectArrow.entering {
+  animation: rotateAnimation .2s forwards ease-in-out;
+}
+
+.selectArrow.exiting {
+  animation: rotateAnimation .2s reverse ease-in-out;
+}
+
+@keyframes rotateAnimation {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}
+
+.dropdown.entered {
+  top: 36px;
+  opacity: 1;
+}
+
+.dropdown.exited {
+  top: 10px;
+  opacity: 0;
+  display: none;
+}
+
+.dropdown.entering {
+  animation: dropdownAnimation .2s forwards ease-in-out;
+}
+
+.dropdown.exiting {
+  animation: dropdownAnimation .2s reverse ease-in-out;
+}
+
+@keyframes dropdownAnimation {
+  0% {
+    top: 10px;
+    opacity: 0;
+    display: flex;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    top: 36px;
+    opacity: 1;
+  }
+}
+
+input[type=radio], input[type=checkbox] {
+  content: '';
+  position: absolute;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  transition: .1s ease-in-out;
+  animation: op .3s reverse ease;
+}
+
+.radio {
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 3px solid #275180;
+}
+
+.checkbox {
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 3px solid #275180;
+}
+
+input[type=radio]:checked + .radio, input[type=checkbox]:checked + .checkbox {
+  /* background-color: rgba(255, 255, 255, 1); */
+  animation: op .3s forwards ease;
+}
+
+input[type=radio]:focus, input[type=checkbox]:focus {
+  outline: none ;
+}
+
+input[type=radio]:focus + .radio, input[type=checkbox]:focus + .checkbox {
+  outline: 2px solid #fff;
+}
+@keyframes op {
+  from {
+    background-color: rgba(255, 255, 255, 0.1);
+  } to {
+    background-color: rgba(255, 255, 255, 1);
+  }
+}
+
+a:focus {
+  outline: none;
 }

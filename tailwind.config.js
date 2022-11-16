@@ -10,7 +10,8 @@ module.exports = {
         'light-blue': '#21436B',
         'dark-blue': '#172737',
         'kek-blue': '#172F4B',
-        'blue': '#254D79'
+        'blue': '#254D79',
+        'light-blue2': '#275180'
       },
       screens: {
         'sm': {'max': '900px'},

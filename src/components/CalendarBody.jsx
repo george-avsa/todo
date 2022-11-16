@@ -10,17 +10,24 @@ export default function CalendarBody(props) {
     }, [props.items])
 
     return (
-        <div className='w-full grid grid-cols-7 gap-4 mt-9 md:grid-cols-5 sm:grid-cols-3'>
-            <WeekDays header={props.header}/>
-            <Transition
-                in={props.animation}
-                timeout={150}
-                unmountOnExit
-            >
-                {state => 
-                    <CalendarItems items={props.items} classState={state} tasks={props.tasks} />
-                }
-            </Transition>
-        </div>
+        <>
+        {props.tasks.length
+        ? 
+        (<div className='w-full grid grid-cols-7 gap-4 mt-9 md:grid-cols-5 sm:grid-cols-3'>
+                <WeekDays header={props.header}/>
+                <Transition
+                    in={props.animation}
+                    timeout={150}
+                    unmountOnExit
+                >
+                    {state => 
+                        <CalendarItems setModal={props.setModal} items={props.items} classState={state} tasks={props.tasks} />
+                    }
+                </Transition>
+            </div>)
+        :
+        (<div className='w-full caret-black pt-20 box-border flex justify-center text-xl'>No Database Connection</div>)
+        }
+        </>
     )
     }
